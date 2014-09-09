@@ -4,7 +4,10 @@ __pycache__/
 
 # C extensions
 *.so
-bhive/.idea/
+
+# IDE
+*.idea/
+
 # Distribution / packaging
 .Python
 env/

@@ -1,1 +1,1 @@
-web: gunicorn bhive.wsgi --pythonpath=bhive/ --log-file -
+web: gunicorn bhive.wsgi --log-file -
