@@ -19,9 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '37e!=d$okf6gbe5m#jucf#$t*4mb8%!!o(sf)8e!6nva6xo^na'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -59,21 +56,6 @@ ROOT_URLCONF = 'bhive.urls'
 WSGI_APPLICATION = 'bhive.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bhive',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'USER': 'bhive',
-        'PASSWORD': 'garbage',
-        'OPTIONS': {'autocommit': True},
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -92,6 +74,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 REST_FRAMEWORK = {
