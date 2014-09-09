@@ -80,7 +80,6 @@ STATICFILES_DIRS = (
 
 
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 10,
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
