@@ -6,8 +6,14 @@ class Question(models.Model):
     text = models.CharField(max_length=140)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __unicode__(self):
+        return u'Question #{}'.format(self.pk)
+
 
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.CharField(max_length=25)
     votes = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return u'Answer to question {} ({} votes)'.format(self.question_id, self.votes)
