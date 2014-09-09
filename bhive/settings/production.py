@@ -1,5 +1,7 @@
 import dj_database_url
 
+from bhive.settings.base import REST_FRAMEWORK
+
 
 DEBUG = False
 
@@ -13,3 +15,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
+
+# Turn off browsable api in production
+REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
+    'rest_framework.renderers.JSONRenderer',
+)
