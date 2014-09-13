@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from bhive_app.models import Answer, Question
@@ -27,3 +28,18 @@ class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = ('id', 'text', 'votes',)
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'username', 'password',)
+
+    def to_native(self, obj):
+        """
+        Remove password field when serializing an object
+        """
+        serialized = super(UserSerializer, self).to_native(obj)
+        del serialized['password']
+        return serialized

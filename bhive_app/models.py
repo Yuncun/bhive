@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -17,3 +18,8 @@ class Answer(models.Model):
 
     def __unicode__(self):
         return u'Answer to question {} ({} votes)'.format(self.question_id, self.votes)
+
+
+class Vote(models.Model):
+    answer = models.ForeignKey(Answer)
+    user = models.ForeignKey(User)

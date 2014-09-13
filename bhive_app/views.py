@@ -1,10 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.db.models import F
 from rest_framework import status
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.response import Response
 
 from bhive_app.models import Answer, Question
-from bhive_app.serializers import AnswerSerializer, QuestionSerializer
+from bhive_app.serializers import AnswerSerializer, QuestionSerializer, UserSerializer
 
 
 TRUE_VALUES = ['True', 'true', 1]
@@ -35,6 +36,13 @@ class AnswerVote(UpdateAPIView):
         if vote in TRUE_VALUES:
             Answer.objects.filter(id__in=[obj.pk]).update(votes=F('votes') + 1)
 
+        # obj.vote_set.create(user=request.user)
+
         obj = self.get_object_or_none()
         serializer = self.get_serializer(obj)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserRegistration(CreateAPIView):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
