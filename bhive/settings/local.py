@@ -6,11 +6,11 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bhive',
+        'NAME': 'postgres',                      
+        'USER': 'postgres',
+        'PASSWORD': 'bayern22',
         'HOST': 'localhost',
-        'PORT': '5432',
-        'USER': 'bhive',
-        'PASSWORD': 'garbage',
+		'PORT': '5432',
         'OPTIONS': {'autocommit': True},
     }
 }
