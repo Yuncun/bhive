@@ -3,7 +3,7 @@ import dj_database_url
 from bhive.settings.base import REST_FRAMEWORK
 
 
-DEBUG = True
+DEBUG = False
 
 # Parse database configuration from $DATABASE_URL
 DATABASES = {
