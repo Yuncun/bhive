@@ -6,10 +6,10 @@ from bhive_app.models import Answer, Question
 
 class EmbeddedAnswerSerializer(serializers.ModelSerializer):
     votes = serializers.IntegerField(read_only=True)
-
+    picture = serializers.ImageField(read_only=True)
     class Meta:
         model = Answer
-        fields = ('id', 'text', 'votes',)
+        fields = ('id', 'picture', 'text', 'votes',)
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -23,11 +23,12 @@ class QuestionSerializer(serializers.ModelSerializer):
 class AnswerSerializer(serializers.ModelSerializer):
     text = serializers.CharField(read_only=True)
     vote = serializers.BooleanField(required=True)
+    picture = serializers.ImageField(read_only=True)
     votes = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Answer
-        fields = ('id', 'text', 'votes',)
+        fields = ('id', 'picture', 'text', 'votes',)
 
 
 class UserSerializer(serializers.ModelSerializer):
